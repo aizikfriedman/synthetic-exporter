@@ -1,8 +1,8 @@
 # Synthetic Exporter (Go + Playwright + Prometheus)
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/aizik-fridman/synthetic-exporter)](https://github.com/aizik-fridman/synthetic-exporter)
-[![CI Status](https://img.shields.io/github/actions/workflow/status/aizik-fridman/synthetic-exporter/ci.yml?branch=main)](https://github.com/aizik-fridman/synthetic-exporter/actions)
-[![Release](https://img.shields.io/github/v/release/aizik-fridman/synthetic-exporter)](https://github.com/aizik-fridman/synthetic-exporter/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/aizikfriedman/synthetic-exporter)](https://github.com/aizikfriedman/synthetic-exporter)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/aizikfriedman/synthetic-exporter/ci.yml?branch=main)](https://github.com/aizikfriedman/synthetic-exporter/actions)
+[![Release](https://img.shields.io/github/v/release/aizikfriedman/synthetic-exporter)](https://github.com/aizikfriedman/synthetic-exporter/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A synthetic monitoring exporter written in **Go**, designed to integrate with existing Prometheus-based monitoring stacks. It performs API HTTP status checks, TLS certificate expiration checks, and multi-step **headless browser UI scenarios** using **Playwright for Go**, exposing the results as Prometheus metrics.
@@ -171,7 +171,7 @@ Ensure you have **Go 1.22+** installed:
 
 ```bash
 # Clone repository
-git clone https://github.com/aizik-fridman/synthetic-exporter.git
+git clone https://github.com/aizikfriedman/synthetic-exporter.git
 cd synthetic-exporter
 
 # Set credentials in host environment
@@ -195,13 +195,16 @@ The endpoint can then be added as a scrape target in an existing Prometheus inst
 
 The Docker image comes with a baked-in default `config.yaml` that is configured to monitor GitHub's website. In order to use the exporter for your own environments, you must write a custom configuration file matching the targets you wish to monitor.
 
-You can pull the pre-built image from the GitHub Container Registry (GHCR) or build it locally using the included Dockerfile.
+You can pull the pre-built image from Docker Hub or GitHub Container Registry (GHCR), or build it locally using the included Dockerfile.
 
 ```bash
-# Option 1: Pull from GHCR
-docker pull ghcr.io/aizik-fridman/synthetic-exporter:latest
+# Option 1: Pull from Docker Hub
+docker pull aizikfriedman/synthetic-exporter:latest
 
-# Option 2: Build locally
+# Option 2: Pull from GHCR
+docker pull ghcr.io/aizikfriedman/synthetic-exporter:latest
+
+# Option 3: Build locally
 docker build -t synthetic-exporter:latest .
 
 # Run container and mount your custom configuration file using a bind mount (-v)
@@ -210,7 +213,7 @@ docker run --rm -p 10050:10050 \
   -e GITHUB_PASSWORD="my_secret_password" \
   -e GITHUB_TOKEN="Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
   -v /path/to/local/config.yaml:/app/config.yaml:ro \
-  ghcr.io/aizik-fridman/synthetic-exporter:latest
+  aizikfriedman/synthetic-exporter:latest
 ```
 
 ---

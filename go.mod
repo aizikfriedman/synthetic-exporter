@@ -1,4 +1,4 @@
-module github.com/aizik-fridman/synthetic-exporter
+module github.com/aizikfriedman/synthetic-exporter
 
 go 1.26.0
 
